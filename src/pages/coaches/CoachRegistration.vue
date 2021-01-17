@@ -12,11 +12,14 @@ import CoachForm from '../../components/coaches/CoachForm.vue';
 
 export default {
   components: {
-    CoachForm,
+    CoachForm
   },
   methods: {
+    // gets the data from CoachForm component
     saveData(data) {
+      // dispatches the register coach action
       this.$store.dispatch('coaches/registerCoach', data);
+      // cannot go back since we are using replace instead of push
       this.$router.replace('/coaches');
     }
   }

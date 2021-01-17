@@ -1,6 +1,10 @@
 <template>
   <div>
-    <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
       <p>{{ error }}</p>
     </base-dialog>
     <section>
@@ -28,12 +32,12 @@ import RequestItem from '../../components/requests/RequestItem.vue';
 
 export default {
   components: {
-    RequestItem,
+    RequestItem
   },
   data() {
     return {
       isLoading: false,
-      error: null,
+      error: null
     };
   },
   computed: {
@@ -42,7 +46,7 @@ export default {
     },
     hasRequests() {
       return this.$store.getters['requests/hasRequests'];
-    },
+    }
   },
   created() {
     this.loadRequests();
@@ -59,8 +63,8 @@ export default {
     },
     handleError() {
       this.error = null;
-    },
-  },
+    }
+  }
 };
 </script>
 

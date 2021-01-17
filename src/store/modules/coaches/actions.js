@@ -12,7 +12,7 @@ export default {
     const token = context.rootGetters.token;
 
     const response = await fetch(
-      `https://vue-http-demo-85e9e.firebaseio.com/coaches/${userId}.json?auth=` +
+      `https://coach-finder-29764-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=` +
         token,
       {
         method: 'PUT',
@@ -26,18 +26,21 @@ export default {
       // error ...
     }
 
+    // this stores the newly created coach in the local vue store
     context.commit('registerCoach', {
       ...coachData,
       id: userId
     });
   },
+  // fetches the coaches data from the firebase db
   async loadCoaches(context, payload) {
+    // checks for lastfetch time and force refresh
     if (!payload.forceRefresh && !context.getters.shouldUpdate) {
       return;
     }
 
     const response = await fetch(
-      `https://vue-http-demo-85e9e.firebaseio.com/coaches.json`
+      `https://coach-finder-29764-default-rtdb.firebaseio.com/coaches.json`
     );
     const responseData = await response.json();
 
@@ -60,6 +63,7 @@ export default {
       coaches.push(coach);
     }
 
+    // fills vuex store with coaches and new lastfetch time
     context.commit('setCoaches', coaches);
     context.commit('setFetchTimestamp');
   }

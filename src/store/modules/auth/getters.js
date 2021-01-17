@@ -6,6 +6,7 @@ export default {
     return state.token;
   },
   isAuthenticated(state) {
+    // converts token string value to Boolean type true
     return !!state.token;
   },
   didAutoLogout(state) {

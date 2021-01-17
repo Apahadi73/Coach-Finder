@@ -1,4 +1,4 @@
-let timer;
+let timer; //holds browser timer for expiration time used for autologin and auto logout
 
 export default {
   async login(context, payload) {
@@ -16,11 +16,11 @@ export default {
   async auth(context, payload) {
     const mode = payload.mode;
     let url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBvOcmh_Avvu08bFdUHdmJzA06c6vV4h0E';
+      'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDZSR9Wz71lq9QlZcW4BgfRzLAueLoH42Y';
 
     if (mode === 'signup') {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBvOcmh_Avvu08bFdUHdmJzA06c6vV4h0E';
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDZSR9Wz71lq9QlZcW4BgfRzLAueLoH42Y';
     }
     const response = await fetch(url, {
       method: 'POST',
@@ -40,14 +40,17 @@ export default {
       throw error;
     }
 
+    // handles the token expiration
     const expiresIn = +responseData.expiresIn * 1000;
     // const expiresIn = 5000;
     const expirationDate = new Date().getTime() + expiresIn;
 
+    // stores response data object in the local storage of the browser
     localStorage.setItem('token', responseData.idToken);
     localStorage.setItem('userId', responseData.localId);
     localStorage.setItem('tokenExpiration', expirationDate);
 
+    // autologouts after token expires
     timer = setTimeout(function() {
       context.dispatch('autoLogout');
     }, expiresIn);
@@ -68,6 +71,7 @@ export default {
       return;
     }
 
+    // auto logsout user after
     timer = setTimeout(function() {
       context.dispatch('autoLogout');
     }, expiresIn);
@@ -80,6 +84,7 @@ export default {
     }
   },
   logout(context) {
+    // clears data from the local storage
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('tokenExpiration');

@@ -20,6 +20,7 @@ export default {
     }
   },
   created() {
+    // tries to auto login if there is token in the local storage
     this.$store.dispatch('tryLogin');
   },
   watch: {
@@ -40,7 +41,8 @@ export default {
 html {
   font-family: 'Open Sans', sans-serif;
 }
-h1 {
+h1,
+label {
   font-family: 'Ubuntu', sans-serif;
 }
 

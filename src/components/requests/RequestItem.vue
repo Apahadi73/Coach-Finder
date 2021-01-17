@@ -15,7 +15,7 @@ export default {
       return 'mailto:' + this.email;
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -26,14 +26,14 @@ li {
 }
 
 a {
-  color: #3d008d;
+  color: #16c79a;
   text-decoration: none;
   font-weight: bold;
 }
 
 a:hover,
 a:active {
-  color: #8d007a;
+  color: #007965;
 }
 
 p {

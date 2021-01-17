@@ -13,6 +13,7 @@
     <section>
       <base-card>
         <div class="controls">
+          <!-- forces to refresh -->
           <base-button mode="outline" @click="loadCoaches(true)"
             >Refresh</base-button
           >
@@ -76,6 +77,7 @@ export default {
     },
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
+      // filters coaches by their areas
       return coaches.filter(coach => {
         if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
           return true;

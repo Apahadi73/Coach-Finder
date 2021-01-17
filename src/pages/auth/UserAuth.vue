@@ -16,11 +16,14 @@
           <label for="password">Password</label>
           <input type="password" id="password" v-model.trim="password" />
         </div>
-        <p
-          v-if="!formIsValid"
-        >Please enter a valid email and password (must be at least 6 characters long).</p>
+        <p v-if="!formIsValid">
+          Please enter a valid email and password (must be at least 6 characters
+          long).
+        </p>
         <base-button>{{ submitButtonCaption }}</base-button>
-        <base-button type="button" mode="flat" @click="switchAuthMode">{{ switchModeButtonCaption }}</base-button>
+        <base-button type="button" mode="flat" @click="switchAuthMode">{{
+          switchModeButtonCaption
+        }}</base-button>
       </form>
     </base-card>
   </div>
@@ -35,7 +38,7 @@ export default {
       formIsValid: true,
       mode: 'login',
       isLoading: false,
-      error: null,
+      error: null
     };
   },
   computed: {
@@ -52,7 +55,7 @@ export default {
       } else {
         return 'Login instead';
       }
-    },
+    }
   },
   methods: {
     async submitForm() {
@@ -70,7 +73,7 @@ export default {
 
       const actionPayload = {
         email: this.email,
-        password: this.password,
+        password: this.password
       };
 
       try {
@@ -79,6 +82,7 @@ export default {
         } else {
           await this.$store.dispatch('signup', actionPayload);
         }
+        // redirects to specified page or coaches after the user authentication
         const redirectUrl = '/' + (this.$route.query.redirect || 'coaches');
         this.$router.replace(redirectUrl);
       } catch (err) {
@@ -96,8 +100,8 @@ export default {
     },
     handleError() {
       this.error = null;
-    },
-  },
+    }
+  }
 };
 </script>
 

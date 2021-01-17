@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{invalid: !firstName.isValid}">
+    <div class="form-control" :class="{ invalid: !firstName.isValid }">
       <label for="firstname">Firstname</label>
       <input
         type="text"
@@ -10,7 +10,7 @@
       />
       <p v-if="!firstName.isValid">Firstname must not be empty.</p>
     </div>
-    <div class="form-control" :class="{invalid: !lastName.isValid}">
+    <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastname">Lastname</label>
       <input
         type="text"
@@ -20,7 +20,7 @@
       />
       <p v-if="!lastName.isValid">Lastname must not be empty.</p>
     </div>
-    <div class="form-control" :class="{invalid: !description.isValid}">
+    <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
       <textarea
         id="description"
@@ -30,13 +30,28 @@
       ></textarea>
       <p v-if="!description.isValid">Description must not be empty.</p>
     </div>
-    <div class="form-control" :class="{invalid: !rate.isValid}">
+    <div class="form-control" :class="{ invalid: !rate.isValid }">
       <label for="rate">Hourly Rate</label>
-      <input type="number" id="rate" v-model.number="rate.val" @blur="clearValidity('rate')" />
+      <input
+        type="number"
+        id="rate"
+        v-model.number="rate.val"
+        @blur="clearValidity('rate')"
+      />
       <p v-if="!rate.isValid">Rate must be greater than 0.</p>
     </div>
-    <div class="form-control" :class="{invalid: !areas.isValid}">
+    <div class="form-control" :class="{ invalid: !areas.isValid }">
       <h3>Areas of Expertise</h3>
+      <div>
+        <input
+          type="checkbox"
+          id="Database"
+          value="Database"
+          v-model="areas.val"
+          @blur="clearValidity('areas')"
+        />
+        <label for="Database">Database Design</label>
+      </div>
       <div>
         <input
           type="checkbox"
@@ -81,25 +96,25 @@ export default {
     return {
       firstName: {
         val: '',
-        isValid: true,
+        isValid: true
       },
       lastName: {
         val: '',
-        isValid: true,
+        isValid: true
       },
       description: {
         val: '',
-        isValid: true,
+        isValid: true
       },
       rate: {
         val: null,
-        isValid: true,
+        isValid: true
       },
       areas: {
         val: [],
-        isValid: true,
+        isValid: true
       },
-      formIsValid: true,
+      formIsValid: true
     };
   },
   methods: {
@@ -131,7 +146,7 @@ export default {
     },
     submitForm() {
       this.validateForm();
-
+      // return if form is invalid
       if (!this.formIsValid) {
         return;
       }
@@ -141,12 +156,13 @@ export default {
         last: this.lastName.val,
         desc: this.description.val,
         rate: this.rate.val,
-        areas: this.areas.val,
+        areas: this.areas.val
       };
 
+      // call save-data callback of coach registration component if the form is valid
       this.$emit('save-data', formData);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -179,7 +195,7 @@ input:focus,
 textarea:focus {
   background-color: #f0e6fd;
   outline: none;
-  border-color: #3d008d;
+  border-color: #007965;
 }
 
 input[type='checkbox'] {
@@ -189,7 +205,7 @@ input[type='checkbox'] {
 }
 
 input[type='checkbox']:focus {
-  outline: #3d008d solid 1px;
+  outline: #007965 solid 1px;
 }
 
 h3 {

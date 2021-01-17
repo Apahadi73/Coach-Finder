@@ -6,6 +6,7 @@ export default {
   namespaced: true,
   state() {
     return {
+      // holds timestamp
       lastFetch: null,
       // list of all coaches
       coaches: [
