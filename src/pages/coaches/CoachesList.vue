@@ -62,7 +62,8 @@ export default {
       activeFilters: {
         frontend: true,
         backend: true,
-        career: true
+        career: true,
+        Database: true
       }
     };
   },
@@ -83,6 +84,9 @@ export default {
           return true;
         }
         if (this.activeFilters.career && coach.areas.includes('career')) {
+          return true;
+        }
+        if (this.activeFilters.Database && coach.areas.includes('Database')) {
           return true;
         }
         return false;

@@ -22,7 +22,7 @@ export default {
           id: 'c2',
           firstName: 'Sanford',
           lastName: 'Raylene',
-          areas: ['backend', 'career'],
+          areas: ['backend', 'Database'],
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis diam ullamcorper, bibendum sapien a, malesuada sapien. Curabitur posuere metus nulla, et fringilla urna rutrum posuere. Duis eget enim ut felis commodo auctor. Aliquam et lacinia nibh, finibus placerat nisl. Maecenas hendrerit et erat in varius. Duis ultrices vehicula tincidunt. Suspendisse nulla sem, mollis nec est eget, ornare luctus diam. Praesent eu scelerisque felis.',
           hourlyRate: 30
@@ -31,7 +31,7 @@ export default {
           id: 'c3',
           firstName: 'Marianne',
           lastName: 'Dallas',
-          areas: ['frontend', 'career'],
+          areas: ['frontend', 'Database'],
           description:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis diam ullamcorper, bibendum sapien a, malesuada sapien. Curabitur posuere metus nulla, et fringilla urna rutrum posuere. Duis eget enim ut felis commodo auctor. Aliquam et lacinia nibh, finibus placerat nisl. Maecenas hendrerit et erat in varius. Duis ultrices vehicula tincidunt. Suspendisse nulla sem, mollis nec est eget, ornare luctus diam. Praesent eu scelerisque felis.',
           hourlyRate: 33

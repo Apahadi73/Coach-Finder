@@ -1,6 +1,6 @@
 <template>
   <base-card>
-    <h2>Find Your Coach</h2>
+    <h2>Filter Coaches:</h2>
     <span class="filter-option">
       <input type="checkbox" id="frontend" checked @change="setFilter" />
       <label for="frontend">Frontend</label>
@@ -8,6 +8,10 @@
     <span class="filter-option">
       <input type="checkbox" id="backend" checked @change="setFilter" />
       <label for="backend">Backend</label>
+    </span>
+    <span class="filter-option">
+      <input type="checkbox" id="Database" checked @change="setFilter" />
+      <label for="Database">Database</label>
     </span>
     <span class="filter-option">
       <input type="checkbox" id="career" checked @change="setFilter" />
@@ -24,7 +28,8 @@ export default {
       filters: {
         frontend: true,
         backend: true,
-        career: true
+        career: true,
+        Database: true
       }
     };
   },
@@ -32,15 +37,17 @@ export default {
     setFilter(event) {
       const inputId = event.target.id;
       const isActive = event.target.checked;
+      // updates the isActive property in filters object
       const updatedFilters = {
         ...this.filters,
         [inputId]: isActive
       };
       this.filters = updatedFilters;
+      // emits the change-filter callback to the coacheslist component
       this.$emit('change-filter', updatedFilters);
     }
   }
-}
+};
 </script>
 
 <style scoped>

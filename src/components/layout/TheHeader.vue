@@ -40,6 +40,7 @@ export default {
 
 <style scoped>
 header {
+  font-family: 'Ubuntu', sans-serif;
   width: 100%;
   height: 5rem;
   background-color: #11698e;

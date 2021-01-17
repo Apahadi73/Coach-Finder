@@ -38,7 +38,10 @@ export default {
 }
 
 html {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+h1 {
+  font-family: 'Ubuntu', sans-serif;
 }
 
 body {
