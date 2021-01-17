@@ -42,7 +42,7 @@ export default {
 
     // handles the token expiration
     const expiresIn = +responseData.expiresIn * 1000;
-    // const expiresIn = 5000;
+    // const expiresIn = 3000;
     const expirationDate = new Date().getTime() + expiresIn;
 
     // stores response data object in the local storage of the browser
@@ -68,10 +68,10 @@ export default {
     const expiresIn = +tokenExpiration - new Date().getTime();
 
     if (expiresIn < 0) {
-      return;
+      return; //timer expired
     }
 
-    // auto logsout user after
+    // auto logsout user if the token has not expired
     timer = setTimeout(function() {
       context.dispatch('autoLogout');
     }, expiresIn);
@@ -96,6 +96,7 @@ export default {
       userId: null
     });
   },
+  // auto logouts
   autoLogout(context) {
     context.dispatch('logout');
     context.commit('setAutoLogout');
